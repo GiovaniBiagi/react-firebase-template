@@ -1,5 +1,6 @@
 {
   "name": "firebase-boilerplate",
+  "author": "Giovani de Biagi Alves",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

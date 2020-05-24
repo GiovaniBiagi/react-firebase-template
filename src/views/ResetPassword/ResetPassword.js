@@ -3,9 +3,9 @@ import { Form } from '@unform/web';
 import { Link } from 'react-router-dom';
 import { Input } from '../../components';
 import { parseErrorMessage } from '../validations/parseFirebaseLoginErrors';
-import { createUserWithEmailAndPassword } from '../functions/firebaseFunctions';
+import { resetPassword } from '../functions/firebaseFunctions';
 
-import './Register.css';
+import './ResetPassword.css';
 
 export default function Register({ history }) {
     const [error, setError] = useState(false);
@@ -14,9 +14,10 @@ export default function Register({ history }) {
     async function handleSubmit(data) {
         setIsLoading(!isLoading);
 
-        const { email, password } = data;
+        const { email } = data;
+
         try {
-            await createUserWithEmailAndPassword(email, password);
+            await resetPassword(email);
             history.push('/');
         } catch (error) {
             const parsedError = await parseErrorMessage(error);
@@ -28,13 +29,12 @@ export default function Register({ history }) {
 
     return (
         <div className="container">
-            <h1>Cadastre-se</h1>
+            <h1>Resetar senha</h1>
             <div className="form-container">
                 <Form onSubmit={handleSubmit}>
                     <Input name="email" type="email" />
-                    <Input name="password" type="password" />
                     {!isLoading && (
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit">Resetar senha</button>
                     )}
                     {isLoading && (
                         <button type="button" disabled>Aguarde...</button>
@@ -45,7 +45,7 @@ export default function Register({ history }) {
                 )}
                 <div className="link-container">
                     <Link to='/'>Entrar</Link>
-                    <Link to='/reset-password'>Redefinir senha</Link>
+                    <Link to='/register'>Cadastre-se</Link>
                 </div>
             </div>
         </div>
