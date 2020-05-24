@@ -10,7 +10,7 @@ Para utilizar o projeto, basta clona-lo, rodar o comando `yarn` ou `npm install`
 
 O diretório `Components` é destinados aos componentes básicos da aplicação. Existem alguns componentes básicos criados para o funcionamento básico do template, sendo eles:
 
-* `Input` - Este input foi criado utilizando a biblioteca `unform da Rocketseat` (docs: https://unform.dev/). Para utilziar inputs customizados de outras libs, basta trocar a tag HTML `<input />` pelo input da lib desejada. O exemplo abaixo demonstra esta troca para um input do `Material-ui`:
+* `Input` - Este input foi criado utilizando a biblioteca `unform da Rocketseat` (docs: https://unform.dev/). Para utilizar inputs customizados de outras libs, basta trocar a tag HTML `<input />` pelo input da lib desejada. O exemplo abaixo demonstra esta troca para um input do `Material-ui`:
 
 * Formato atual
 ```jsx
