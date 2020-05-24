@@ -121,11 +121,11 @@ Diretório que armazena as telas da aplicação.
 * `Home` - Tela inicial da aplicação.
 * `Login` - Login da aplicação.
 * `Register` - Tela de registro da aplicação.
-* `ForgotPassword` - Tela para recuperação de senha.
+* `ResetPassword` - Tela para resetar senha.
 
 ## App.js
 
-Arquivo que contém as rotas externas da aplicação como Login, ForgotPassword e Register.
+Arquivo que contém as rotas externas da aplicação como Login, ResetPassword e Register.
 
 ## global.css
 
