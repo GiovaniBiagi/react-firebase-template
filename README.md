@@ -6,7 +6,7 @@ Template destinado a projetos básicos que serão iniciados com firebase.
 
 O diretório `Components` é destinados aos componentes básicos da aplicação. Existem alguns componentes básicos criados para o funcionamento básico do template, sendo eles:
 
-* `Input` - Este input foi criado utilizando a biblioteca ```jsx unform da Rocketseat ```(docs: https://unform.dev/). Para utilziar inputs customizados de outras libs, basta trocar a tag HTML ```jsx <input />``` pelo input da lib desejada. O exemplo abaixo demonstra esta troca para um input do `Material-ui`:
+* `Input` - Este input foi criado utilizando a biblioteca `unform da Rocketseat` (docs: https://unform.dev/). Para utilziar inputs customizados de outras libs, basta trocar a tag HTML `<input />` pelo input da lib desejada. O exemplo abaixo demonstra esta troca para um input do `Material-ui`:
 
 * Formato atual
 ```jsx
@@ -67,7 +67,7 @@ O diretótio `Layouts` foi criado para o armazenamento de layouts da aplicação
 
 Responsável por armazenar as configurações de serviços externos à aplicação.
 
-* `api.js` - Configurações basicas da lib ```jsx axios``` (docs: https://github.com/axios/axios#axios) para chamadas à APIs. Todas as configurações feitas neste arquivos estão disponíveis na documentação da lib.
+* `api.js` - Configurações basicas da lib `axios` (docs: https://github.com/axios/axios#axios) para chamadas à APIs. Todas as configurações feitas neste arquivos estão disponíveis na documentação da lib.
 
 * `HttpResponseErrorHandler.js` - Responsável pelo tratamento de erros das requests HTTP. Expemplo de tratamento básico:
 
