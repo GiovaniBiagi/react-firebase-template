@@ -2,6 +2,10 @@
 
 Template destinado a projetos básicos que serão iniciados com firebase.
 
+## Utilizar
+
+Para utilizar o projeto, basta clona-lo, rodar o comando `yarn` ou `npm install` dentro do diretório e antes de inicia-lo preencher o valor das variáveis de ambiente no arquivo `.env`, com os valores gerados no registro de sua aplicação no Firebase.
+
 ## Componentes
 
 O diretório `Components` é destinados aos componentes básicos da aplicação. Existem alguns componentes básicos criados para o funcionamento básico do template, sendo eles:
@@ -127,6 +131,9 @@ Arquivo que contém as rotas externas da aplicação como Login, ForgotPassword 
 
 Contém o estilo global da aplicação.
 
-## Utilizar
+## Próximos passos
 
-Para utilizar o projeto, basta clona-lo, rodar o comando `yarn` ou `npm install` dentro do diretório e antes de inicia-lo preencher o valor das variáveis de ambiente no arquivo `.env`, com os valores gerados no registro de sua aplicação no Firebase.
+Os proximos passos planejados são:
+
+* Adicionar testes utilizando `JEST + Enzyme`.
+* Implementar `Typescript`.
