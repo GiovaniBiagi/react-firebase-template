@@ -1,68 +1,132 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Firebase Template
 
-## Available Scripts
+Template destinado a projetos básicos que serão iniciados com firebase.
 
-In the project directory, you can run:
+## Componentes
 
-### `yarn start`
+O diretório `Components` é destinados aos componentes básicos da aplicação. Existem alguns componentes básicos criados para o funcionamento básico do template, sendo eles:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* `Input` - Este input foi criado utilizando a biblioteca ```jsx unform da Rocketseat ```(docs: https://unform.dev/). Para utilziar inputs customizados de outras libs, basta trocar a tag HTML ```jsx <input />``` pelo input da lib desejada. O exemplo abaixo demonstra esta troca para um input do `Material-ui`:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Formato atual
+```jsx
+import React, { useEffect, useRef } from 'react';
+import { useField } from '@unform/core';
 
-### `yarn test`
+export default function Input({ name, ...rest }) {
+    const inputRef = useRef(null);
+    const { fieldName, defaultValue, registerField, error } = useField(name);
+    useEffect(() => {
+        registerField({
+            name: fieldName,
+            ref: inputRef.current,
+            path: 'value',
+        });
+    }, [fieldName, registerField]);
+    return (
+        <>
+            <input ref={inputRef} defaultValue={defaultValue} {...rest} />
+            {error && <span>{error}</span>}
+        </>
+    )
+}
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Utilizando Material-ui
+```jsx
+import React, { useEffect, useRef } from 'react';
+import { useField } from '@unform/core';
+import { TextField } from '@material-ui/core';
 
-### `yarn build`
+export default function Input({ name, ...rest }) {
+    const inputRef = useRef(null);
+    const { fieldName, defaultValue, registerField, error } = useField(name);
+    useEffect(() => {
+        registerField({
+            name: fieldName,
+            ref: inputRef.current,
+            path: 'value',
+        });
+    }, [fieldName, registerField]);
+    return (
+        <>
+            <TextField ref={inputRef} defaultValue={defaultValue} {...rest} />
+            {error && <span>{error}</span>}
+        </>
+    )
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Layouts
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+O diretótio `Layouts` foi criado para o armazenamento de layouts da aplicação.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* `Main` - Utilzado como layout principal da aplicação, responsável por renderizar as rotas e componentes internos da aplicação após o login.
 
-### `yarn eject`
+## Services
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Responsável por armazenar as configurações de serviços externos à aplicação.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* `api.js` - Configurações basicas da lib ```jsx axios``` (docs: https://github.com/axios/axios#axios) para chamadas à APIs. Todas as configurações feitas neste arquivos estão disponíveis na documentação da lib.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* `HttpResponseErrorHandler.js` - Responsável pelo tratamento de erros das requests HTTP. Expemplo de tratamento básico:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```jsx
+const HttpResponseErrorHandler = (error) => {
+  switch (error.response?.status) {
+    case 400:
+      error.response.statusText = "Os dados que você digitou estão incorretos ou não existem.";
+      throw error;
+    case 503:
+      error.response.statusText = "O serviço está temporariamente indisponível";
+      throw error;
+  }
+}
+    
+export default HttpResponseErrorHandler;
+```
 
-## Learn More
+* `HttpResponseSuccessHandler.js` - Responsável pelo tratamento de respostas bem sucedidas de requests HTTP. Exemplo de tratamento:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```jsx
+const HttpResponseSuccessHandler = (response) => ({
+    response,
+    data: response.data,
+});
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default HttpResponseSuccessHandler;
+```
 
-### Code Splitting
+* `firebase.js` - Arquivo que contém o setup básico do firebase. Existe um pacote básico importado para o funcionamento básico deste template:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```jsx
+import "firebase/auth";
+```
 
-### Analyzing the Bundle Size
+para utilizar outros pacotes do firebase por exemplo `firebase/firestore` ou `firebase/storage` basta importa-los dentro deste arquivo.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Views
 
-### Making a Progressive Web App
+Diretório que armazena as telas da aplicação.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* `index.js` - Arquivo de rotas das views.
+* `constants` - Armazena as constants das views, mensagens estáticas, códigos de erro e etc.
+* `validations` - Aramazena arquvios de validação de erros genéricos das views.
+* `functions` - As funções utilizadas nas views estarão neste diretório, como exemplo ja criado, existe o arquivo `firebaseFunctions.js`, que contém as funções do firebase.
+* `Dashboard` - Uma das views criadas para ser utilizada no sistema de rotas da aplicação.
+* `Home` - Tela inicial da aplicação.
+* `Login` - Login da aplicação.
+* `Register` - Tela de registro da aplicação.
+* `ForgotPassword` - Tela para recuperação de senha.
 
-### Advanced Configuration
+## App.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Arquivo que contém as rotas externas da aplicação como Login, ForgotPassword e Register.
 
-### Deployment
+## global.css
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Contém o estilo global da aplicação.
 
-### `yarn build` fails to minify
+## Utilizar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Para utilizar o projeto, basta clona-lo, rodar o comando `yarn` ou `npm install` dentro do diretório e antes de inicia-lo preencher o valor das variáveis de ambiente no arquivo `.env`, com os valores gerados no registro de sua aplicação no Firebase.
