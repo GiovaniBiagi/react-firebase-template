@@ -6,7 +6,13 @@ Template destinado a projetos básicos que serão iniciados com firebase.
 
 ## Utilizar
 
-Para utilizar o projeto, basta clona-lo, rodar o comando `yarn` ou `npm install` dentro do diretório e antes de inicia-lo preencher o valor das variáveis de ambiente no arquivo `.env`, com os valores gerados no registro de sua aplicação no Firebase.
+Para utilizar o projeto, acesse seu terminal e:
+* `git clone https://github.com/GiovaniBiagi/react-firebase-template` para clonar o projeto;
+* `cd react-firbease-template` para acessar o diretório do projeto;
+* `yarn` ou `npm install` para instalar as dependências;
+* `yarn start` ou `npm run start` para iniciar o projeto.
+
+**Lembrete**: Antes de inicia-lo preencha o valor das variáveis de ambiente no arquivo `.env`, com os valores gerados no registro de sua aplicação no Firebase (https://firebase.google.com/docs/web/setup?hl=pt-br).
 
 ## Componentes
 
