@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
 function PrivateRoute({ component: Component, ...rest }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +26,9 @@ function PrivateRoute({ component: Component, ...rest }) {
         )
     }
 
-    return <Component {...rest}/>;
+    return (
+        <Route {...rest} render={props => <Component {...props} />} />
+    );
 }
 
 export default PrivateRoute;
