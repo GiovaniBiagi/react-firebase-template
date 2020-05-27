@@ -75,6 +75,10 @@ export default function Input({ name, ...rest }) {
 }
 ```
 
+* `Menu.js` - Created to navigate into the routes system.
+
+* `PrivateRoute.js` - Develop to identify if user are logged, this component uses the `onAuthStateChanged()` function provided by the `firebase.auth()` object that observes it ensuring that it is not in an intermediate state (such as initialization) when identifying the current user.
+
 ## Layouts
 
 The `Layouts` directory was created to storage the layouts of the aplication.
